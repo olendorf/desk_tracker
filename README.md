@@ -31,11 +31,11 @@ rails console to create an initial user though.
 The CSV upload makes use of the Delayed Job gem. This gem should be fine for this application, but it does hit the database every few seconds. A switch to somethign like Resque might be desired in the future. To start the Delayed Jobs, on the command line
 
 ```
-    RAILS_ENV=production bin/delayed_job start
+    RAILS_ENV=production bin/delayed_job --queue=csv_imports start
     RAILS_ENV=production bin/delayed_job stop
 
     # Runs two workers in separate processes.
-    RAILS_ENV=production bin/delayed_job -n 2 start
+    RAILS_ENV=production bin/delayed_job -n 2 --queue=csv_imports start
     RAILS_ENV=production bin/delayed_job stop
 ```
 
